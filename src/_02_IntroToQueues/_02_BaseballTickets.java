@@ -24,7 +24,7 @@
  */
 
 package _02_IntroToQueues;
-
+import java.util.ArrayList;
 import java.util.ArrayDeque;
 
 /*
@@ -35,7 +35,20 @@ import java.util.ArrayDeque;
 public class _02_BaseballTickets {
 
     public static int calculateWaitTime( ArrayDeque<Integer> ticketsQueue, int position ) {
-        
-        return -1;
+        int ans = 0,posVal, dog = 0;
+        ArrayList<Integer> bruh = new ArrayList<Integer>(ticketsQueue.size());
+    	for (int i = 0; i < 5; i++) {
+    		posVal = ticketsQueue.remove();
+    		bruh.add(posVal);
+    		if (i == position) dog = posVal;
+    	
     }
+    	for (int i = 0; i < bruh.size(); i++) {
+    		if (dog > bruh.get(i)) ans += bruh.get(i);
+    		else if (i <= position) ans += dog;
+    		else ans += dog-1;
+    	}
+    return ans;
+}
+    
 }

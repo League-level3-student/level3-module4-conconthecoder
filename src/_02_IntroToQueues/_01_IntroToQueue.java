@@ -1,4 +1,7 @@
 package _02_IntroToQueues;
+import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Random;
 /* 
  * OBJECTIVE:
  * 1. Push 100 double values onto a Stack.
@@ -34,14 +37,37 @@ public class _01_IntroToQueue {
     public static void main(String[] args) {
         // 1. Create a Stack of Doubles using the Stack class
         //    Note: you have to use the capitalized Double and not double
-
-        // 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
-
+    	Stack<Double> bigStack = new Stack<Double>();
+    	Random rand = new Random();
+    	int g = 100, w = 0, byebye;
+    	Double runny;
+    	System.out.println("have fun lmaoooooo");
+        // 2. Use b loop to add 100 random doubles between 0 and 100 to the Stack
+    	for (int i = 0; i < 100; i++) bigStack.push(rand.nextDouble(100));
         // 3. Create a Queue of Doubles using the ArrayDeque class
         //    Note: you have to use the capitalized Double and not double
-
+    	ArrayDeque<Double> smallQueue = new ArrayDeque<Double>();
         // 4. Pop off 5 elements from the Stack and add them to the Queue 
-
+    	while (g > 0) {
+    		if (5 - smallQueue.size() - g <= 0) {
+    			w = 5 - smallQueue.size();
+    			g -= w;
+    		}
+    		else {
+    			w = g;
+    			g = 0;	
+    		}
+    		for (int i = 0; i < w; i++) {
+    			runny = bigStack.pop();
+    			smallQueue.add(runny);
+    		}
+    		byebye = rand.nextInt(5);
+    		for (int i = 0; i < byebye; i++) {
+    			runny = smallQueue.remove();
+    			System.out.println(runny);
+    		}
+    		System.out.println("---");
+    	}
         // 5. Print and remove a random number of elements, from 1 to 5 elements,
         //    from the front of the Queue. Example:
         //    "removing 3 elements from Queue: 25 57 2"
